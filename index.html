@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CITYMOMVIBESSA - Nourish Your Body, Elevate Your Mind, Embrace Yourself.">
+  <title>CITYMOMVIBESSA | Women's Wellness Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* CITYMOMVIBESSA brand palette */
+:root {
+  --brown: #522D19;
+  --brown-dark: #32190D;
+  --gold: #B78B37;
+  --cream: #FFFBF4;
+  --beige: #F9F3E9;
+  --black: #000000;
+  --white: #FFFFFF;
+  --muted: #786A60;
+  --border: rgba(82, 45, 25, .16);
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Montserrat", Arial, sans-serif;
+  --shadow: 0 20px 60px rgba(50, 25, 13, .10);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--brown); font-family: var(--sans); line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+
+.announcement {
+  background: var(--gold);
+  color: var(--white);
+  text-align: center;
+  padding: 9px 15px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 30px; padding: 18px 5vw;
+  background: rgba(255,251,244,.94); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.brand { display: flex; flex-direction: column; }
+.brand-main { font: 600 29px/1 var(--serif); letter-spacing: .02em; }
+.brand-tagline { margin-top: 5px; font-size: 7px; letter-spacing: .16em; font-weight: 700; }
+.brand-tagline b { color: var(--gold); padding: 0 4px; }
+
+.nav { display: flex; align-items: center; gap: 22px; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+.nav a { transition: .2s ease; }
+.nav a:hover { color: var(--gold); }
+.nav-cta { padding: 11px 15px; background: var(--brown); color: var(--white); }
+.menu-toggle { display: none; background: none; border: 0; color: var(--brown); font-size: 25px; }
+
+.section { padding: 110px 7vw; position: relative; }
+.section-dark { background: var(--brown); color: var(--cream); }
+.section-cream { background: var(--beige); }
+.section-label { font-size: 10px; font-weight: 700; letter-spacing: .22em; margin-bottom: 50px; color: var(--gold); }
+.eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+.gold-text { color: var(--gold); }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.05; }
+h1 { font-size: clamp(52px, 7vw, 105px); max-width: 1000px; }
+h2 { font-size: clamp(44px, 5vw, 75px); }
+h3 { font-size: 29px; }
+h4 { font-size: 25px; }
+p { color: inherit; }
+
+.hero { min-height: 86vh; display: flex; align-items: center; overflow: hidden; }
+.hero-pattern {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 85% 25%, rgba(183,139,55,.20), transparent 28%),
+    linear-gradient(120deg, transparent 55%, rgba(255,251,244,.03) 55%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 1100px; }
+.hero .eyebrow { color: #DCCBA5; margin-bottom: 25px; }
+.hero-copy { max-width: 700px; font-size: 18px; margin: 30px 0; color: #E9DED4; }
+.hero-actions { display: flex; gap: 13px; flex-wrap: wrap; }
+.hero-side {
+  position: absolute; right: 4vw; bottom: 80px; writing-mode: vertical-rl;
+  letter-spacing: .3em; font-size: 10px; opacity: .5;
+}
+.btn { display: inline-block; border: 1px solid transparent; padding: 14px 22px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; transition: .25s; }
+.btn-gold { background: var(--gold); color: var(--white); }
+.btn-gold:hover { transform: translateY(-2px); filter: brightness(1.07); }
+.btn-outline { border-color: rgba(255,255,255,.5); color: var(--white); }
+.btn-outline:hover { background: var(--white); color: var(--brown); }
+.btn-dark { background: var(--brown); color: var(--white); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: start; }
+.body-copy { max-width: 650px; font-size: 16px; color: var(--muted); }
+.body-copy p + p { margin-top: 20px; }
+.quote { border-left: 2px solid var(--gold); padding: 20px 0 20px 25px; margin-top: 35px; font: italic 24px/1.4 var(--serif); color: var(--brown); }
+.quote span { display: block; margin-top: 12px; font: 700 10px var(--sans); letter-spacing: .15em; text-transform: uppercase; color: var(--gold); }
+
+.mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.mission-grid article { padding: 45px; background: var(--cream); border: 1px solid var(--border); }
+.number { display: block; color: var(--gold); font-size: 11px; font-weight: 700; margin-bottom: 35px; }
+.mission-grid h3 { margin-bottom: 15px; }
+.mission-grid p { max-width: 520px; color: var(--muted); }
+
+.section-heading { display: flex; justify-content: space-between; gap: 50px; margin-bottom: 60px; }
+.section-heading > div { max-width: 700px; }
+.section-heading > p { max-width: 340px; align-self: end; color: var(--muted); }
+.section-heading h2 { margin-top: 15px; }
+
+.pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pillar-card { min-height: 330px; padding: 30px; border: 1px solid var(--border); background: var(--white); transition: .3s; }
+.pillar-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--gold); }
+.pillar-card > span { font-size: 10px; font-weight: 700; color: var(--gold); }
+.pillar-card h3 { margin-top: 35px; letter-spacing: .04em; }
+.pillar-card h4 { margin: 8px 0 15px; }
+.pillar-card p { color: var(--muted); font-size: 13px; }
+.pillar-card small { display: block; margin-top: 25px; color: #927F70; font-size: 10px; line-height: 1.7; }
+
+.event { overflow: hidden; }
+.event-intro { max-width: 900px; }
+.event-intro h2 { margin: 15px 0 25px; }
+.event-intro > p:last-child { color: #D9CDC3; max-width: 750px; }
+.journey { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; margin-top: 70px; background: rgba(255,255,255,.12); }
+.journey > div { background: var(--brown); padding: 28px 20px; min-height: 220px; }
+.journey span { display: block; color: var(--gold); font-size: 10px; font-weight: 700; margin-bottom: 45px; }
+.journey strong { font-size: 11px; letter-spacing: .12em; }
+.journey p { margin-top: 12px; color: #CFC1B7; font-size: 12px; }
+.experience-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 50px; }
+.experience-list div { border: 1px solid rgba(255,255,255,.12); padding: 20px; text-align: center; color: #E7DCD3; font: 500 18px var(--serif); }
+
+.speaker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.speaker-card { background: var(--beige); padding: 45px; min-height: 460px; }
+.speaker-initial { width: 80px; height: 80px; display: grid; place-items: center; background: var(--brown); color: var(--gold); font: 600 27px var(--serif); margin-bottom: 50px; }
+.speaker-card h2 { margin: 15px 0 25px; font-size: 52px; }
+.speaker-card > p:not(.eyebrow):not(.speaker-note) { color: var(--muted); }
+.speaker-note { margin-top: 30px; color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+.promise-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.promise-grid div { padding: 35px; border-left: 1px solid var(--border); }
+.promise-grid span { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: .15em; }
+.promise-grid p { margin-top: 15px; color: var(--muted); font: 22px/1.3 var(--serif); }
+
+.register { display: grid; grid-template-columns: .9fr 1.1fr; gap: 8vw; align-items: start; }
+.register-copy h2 { margin: 15px 0 25px; }
+.register-copy > p:last-child { color: #D9CDC3; max-width: 600px; }
+.form-card, .contact-form { background: var(--cream); color: var(--brown); padding: 40px; box-shadow: var(--shadow); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.form-card label, .contact-form label { display: block; margin-bottom: 16px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+input, textarea, select { width: 100%; margin-top: 7px; padding: 13px 14px; border: 1px solid var(--border); background: var(--white); color: var(--brown); outline: none; }
+input:focus, textarea:focus, select:focus { border-color: var(--gold); }
+.form-card .btn { width: 100%; margin-top: 5px; }
+.form-message { min-height: 20px; margin-top: 12px; font-size: 12px; color: var(--gold); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: start; }
+.contact-grid h2 { margin: 15px 0; }
+.contact-grid > div > p:last-child { color: var(--muted); max-width: 500px; }
+
+.footer { display: flex; justify-content: space-between; gap: 20px; padding: 35px 7vw; background: var(--brown-dark); color: var(--cream); font-size: 10px; }
+.footer p { margin-top: 8px; color: #BDAFA4; letter-spacing: .08em; font-size: 8px; }
+
+.reveal { animation: rise .9s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1000px) {
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 20px 7vw; background: var(--cream); flex-direction: column; align-items: stretch; border-bottom: 1px solid var(--border); }
+  .nav.open { display: flex; }
+  .menu-toggle { display: block; }
+  .two-col, .register, .contact-grid, .speaker-grid { grid-template-columns: 1fr; }
+  .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+  .journey { grid-template-columns: repeat(3, 1fr); }
+  .experience-list { grid-template-columns: repeat(2, 1fr); }
+  .promise-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 650px) {
+  .section { padding: 75px 6vw; }
+  .site-header { padding: 16px 6vw; }
+  .brand-tagline { display: none; }
+  h1 { font-size: 49px; }
+  h2 { font-size: 43px; }
+  .pillar-grid, .mission-grid, .form-row, .journey, .experience-list, .promise-grid { grid-template-columns: 1fr; }
+  .hero { min-height: 78vh; }
+  .hero-side { display: none; }
+  .speaker-card { padding: 30px; }
+  .speaker-card h2 { font-size: 42px; }
+  .form-card { padding: 25px; }
+  .footer { flex-direction: column; }
+}
+
+</style>
+</head>
+<body>
+  <div class="announcement">OCTOBER • MENOPAUSE AWARENESS MONTH • WOMEN'S WELLNESS EXPERIENCE</div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="CITYMOMVIBESSA home">
+      <span class="brand-main">citymomvibessa</span>
+      <span class="brand-tagline">NOURISH YOUR BODY <b>|</b> ELEVATE YOUR MIND <b>|</b> EMBRACE YOURSELF</span>
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation">☰</button>
+    <nav class="nav">
+      <a href="#story">Our Story</a>
+      <a href="#pillars">Six Pillars</a>
+      <a href="#experience">Experience</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#register" class="nav-cta">Reserve Your Place</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section-dark">
+      <div class="hero-pattern"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">A SPACE FOR CONNECTION, WELLBEING & BELONGING</p>
+        <h1>YOU ARE NOT MEANT TO NAVIGATE THESE CHANGES ALONE.</h1>
+        <p class="hero-copy">Thoughtfully curated moments to understand your body, strengthen your mind and reconnect with yourself.</p>
+        <div class="hero-actions">
+          <a href="#register" class="btn btn-gold">Reserve Your Place</a>
+          <a href="#experience" class="btn btn-outline">Explore the Experience</a>
+        </div>
+      </div>
+      <div class="hero-side">CITYMOMVIBESSA</div>
+    </section>
+
+    <section id="story" class="section story">
+      <div class="section-label">01 / OUR STORY</div>
+      <div class="two-col">
+        <div>
+          <p class="eyebrow gold-text">WHY CITYMOMVIBESSA</p>
+          <h2>A journey that became a space for other women.</h2>
+        </div>
+        <div class="body-copy">
+          <p>CITYMOMVIBESSA was born from a personal journey through women's health challenges, motherhood, grief, pelvic floor dysfunction, infertility, pregnancy, postpartum highs and lows, low libido, weight changes and the transition into perimenopause and menopause.</p>
+          <p>After finding support from practitioners and counsellors, the idea grew: to share the journey and help women understand that they do not have to endure in silence.</p>
+          <p class="quote">“Each time a woman stands up for herself, without knowing it possibly, without claiming it, she stands up for all women.”<span>— Maya Angelou</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mission section-cream">
+      <div class="section-label">02 / OUR NORTH STAR</div>
+      <div class="mission-grid">
+        <article>
+          <span class="number">01</span>
+          <h3>MISSION</h3>
+          <p>Creating experiences, resources and communities that help women navigate every season of womanhood.</p>
+        </article>
+        <article>
+          <span class="number">02</span>
+          <h3>VISION</h3>
+          <p>Every woman informed, supported, connected and empowered.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pillars" class="section pillars">
+      <div class="section-label">03 / THE SIX PILLARS</div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow gold-text">OUR NORTH STAR</p>
+          <h2>Six ways to bring CITYMOMVIBESSA to life.</h2>
+        </div>
+        <p>A connected approach to women's health, wellbeing, knowledge and belonging.</p>
+      </div>
+      <div class="pillar-grid">
+        <article class="pillar-card"><span>01</span><h3>BODY</h3><h4>Nourish Your Body</h4><p>Helping women understand, care for and reconnect with their bodies.</p><small>Women's health • Pelvic floor • Sexual health • Menopause • Nutrition • Movement • Sleep • Self-care</small></article>
+        <article class="pillar-card"><span>02</span><h3>MIND</h3><h4>Elevate Your Mind</h4><p>Creating space for emotional wellbeing, personal growth and reflection.</p><small>Mental wellbeing • Confidence • Stress management • Emotional health • Identity • Life transitions</small></article>
+        <article class="pillar-card"><span>03</span><h3>SELF</h3><h4>Embrace Yourself</h4><p>Encouraging women to know their worth, celebrate themselves and feel comfortable in their own skin.</p><small>Self-worth • Body confidence • Beauty • Intimacy • Rediscovering yourself</small></article>
+        <article class="pillar-card"><span>04</span><h3>CONNECTION</h3><h4>You Don't Have to Do It Alone</h4><p>Building safe spaces where women can talk, share, listen and connect.</p><small>Women's circles • Support groups • Motherhood • Friendships • Relationships • Community</small></article>
+        <article class="pillar-card"><span>05</span><h3>KNOWLEDGE</h3><h4>Understand. Ask. Learn.</h4><p>Making women's health and wellbeing information easier to access and understand.</p><small>Expert talks • Workshops • Practitioner access • Health education • Practical resources</small></article>
+        <article class="pillar-card"><span>06</span><h3>EXPERIENCE</h3><h4>Wellness You Can Feel</h4><p>Turning wellness from something women simply hear about into something they can experience.</p><small>Wellness events • Movement • Massages • Assessments • Beauty • Family experiences • Retreats</small></article>
+      </div>
+    </section>
+
+    <section id="experience" class="section event section-dark">
+      <div class="section-label">04 / THE EXPERIENCE</div>
+      <div class="event-intro">
+        <p class="eyebrow">WOMEN'S WELLNESS EVENT LAUNCH</p>
+        <h2>From “Is this normal?” to “I know what my next step is.”</h2>
+        <p>October becomes more than a date on the calendar. It becomes a welcoming environment for conversations often postponed around menopause, sexual health, pelvic floor health, mental wellbeing, nutrition, relationships and everyday realities of womanhood.</p>
+      </div>
+      <div class="journey">
+        <div><span>01</span><strong>WELCOME</strong><p>Registration, refreshments & relaxed networking.</p></div>
+        <div><span>02</span><strong>LEARN</strong><p>Expert conversations on women's health and menopause.</p></div>
+        <div><span>03</span><strong>ASK</strong><p>Honest Q&A and intimate conversations.</p></div>
+        <div><span>04</span><strong>EXPERIENCE</strong><p>Massage, wellness activations, assessments & testing.</p></div>
+        <div><span>05</span><strong>CONNECT</strong><p>Community, conversation & shared experiences.</p></div>
+        <div><span>06</span><strong>TAKE HOME</strong><p>Practical knowledge, resources, products and clear next steps.</p></div>
+      </div>
+      <div class="experience-list">
+        <div>Expert-led talks</div><div>10-minute massages</div><div>Goodie bags</div><div>Wellness assessments</div><div>Nutrition guidance</div><div>Food & refreshments</div><div>Prizes to be won</div><div>Community connection</div>
+      </div>
+    </section>
+
+    <section id="speakers" class="section speakers">
+      <div class="section-label">05 / GUEST SPEAKERS</div>
+      <div class="speaker-grid">
+        <article class="speaker-card">
+          <div class="speaker-initial">TM</div>
+          <p class="eyebrow gold-text">CLINICAL PSYCHOLOGIST • KEYNOTE SPEAKER • AUTHOR</p>
+          <h2>Dr. Keitumetse “Tumi” Mashego</h2>
+          <p>Clinical and Sports psychologist, founder of RebaOne Wellness, and author. Her work brings together wellness, psychology, self-belief and practical support.</p>
+          <p class="speaker-note">20 years in service • Independent registered practitioner since 2006</p>
+        </article>
+        <article class="speaker-card">
+          <div class="speaker-initial">AB</div>
+          <p class="eyebrow gold-text">INTIMATE WELLNESS</p>
+          <h2>Alta Truter & Louise Cox</h2>
+          <p>Beyond Barriers Intimate Wellness brings together lifelong friendship, intimacy coaching, TRE®, Kegel exercise coaching, relationship health and honest conversations.</p>
+          <p class="speaker-note">Breaking silence • Building confidence • Creating safe spaces</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section promise section-cream">
+      <div class="section-label">06 / THE EVENT PROMISE</div>
+      <div class="promise-grid">
+        <div><span>INFORMED</span><p>“I understand more about what is happening to me.”</p></div>
+        <div><span>SUPPORTED</span><p>“I know where I can turn for help.”</p></div>
+        <div><span>CONNECTED</span><p>“I am not the only one experiencing this.”</p></div>
+        <div><span>ENABLED</span><p>“I can take my next step.”</p></div>
+      </div>
+    </section>
+
+    <section id="register" class="section register section-dark">
+      <div class="register-copy">
+        <p class="eyebrow">LET'S MAKE IT HAPPEN</p>
+        <h2>Come as you are. Leave with a clearer next step.</h2>
+        <p>Join the CITYMOMVIBESSA Women's Wellness Experience and become part of a community built around connection, wellbeing and belonging.</p>
+      </div>
+      <form id="registrationForm" class="form-card">
+        <div class="form-row">
+          <label>Full name<input name="fullName" required placeholder="Your full name"></label>
+          <label>Email<input name="email" type="email" required placeholder="you@example.com"></label>
+        </div>
+        <div class="form-row">
+          <label>Phone<input name="phone" placeholder="+27 ..."></label>
+          <label>Age range
+            <select name="ageRange">
+              <option value="">Select</option><option>18–24</option><option>25–34</option><option>35–44</option><option>45–54</option><option>55+</option>
+            </select>
+          </label>
+        </div>
+        <label>Areas you're interested in<textarea name="interests" rows="3" placeholder="e.g. menopause, pelvic floor health, nutrition..."></textarea></label>
+        <label>Dietary requirements<input name="dietaryRequirements" placeholder="Optional"></label>
+        <label>How did you hear about us?<input name="referralSource" placeholder="Instagram, friend, website..."></label>
+        <button class="btn btn-gold" type="submit">Reserve My Place</button>
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="section-label">07 / CONNECT</div>
+      <div class="contact-grid">
+        <div>
+          <p class="eyebrow gold-text">CITYMOMVIBESSA</p>
+          <h2>Start the conversation.</h2>
+          <p>Have a partnership, speaker, sponsorship or general enquiry? Send a message.</p>
+        </div>
+        <form id="contactForm" class="contact-form">
+          <label>Name<input name="name" required></label>
+          <label>Email<input name="email" type="email" required></label>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
+          <button class="btn btn-dark" type="submit">Send Message</button>
+          <p id="contactMessage" class="form-message" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <div class="brand-main">citymomvibessa</div>
+      <p>NOURISH YOUR BODY | ELEVATE YOUR MIND | EMBRACE YOURSELF</p>
+    </div>
+    <div>© <span id="year"></span> CITYMOMVIBESSA</div>
+  </footer>
+
+  <script>
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("open");
+});
+
+document.querySelectorAll(".nav a").forEach(link => {
+  link.addEventListener("click", () => nav.classList.remove("open"));
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+async function submitForm(form, endpoint, messageElement, successText) {
+  const button = form.querySelector("button[type='submit']");
+  button.disabled = true;
+  button.style.opacity = "0.65";
+  messageElement.textContent = "Sending...";
+
+  const payload = Object.fromEntries(new FormData(form).entries());
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) throw new Error(data.message || "Something went wrong.");
+
+    messageElement.textContent = successText;
+    form.reset();
+  } catch (error) {
+    messageElement.textContent = error.message || "Please try again.";
+  } finally {
+    button.disabled = false;
+    button.style.opacity = "1";
+  }
+}
+
+document.getElementById("registrationForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  submitForm(
+    event.currentTarget,
+    "/api/registrations",
+    document.getElementById("formMessage"),
+    "You're on the list. We look forward to welcoming you."
+  );
+});
+
+document.getElementById("contactForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  submitForm(
+    event.currentTarget,
+    "/api/contact",
+    document.getElementById("contactMessage"),
+    "Thank you. Your message has been received."
+  );
+});
+
+</script>
+</body>
+</html>
